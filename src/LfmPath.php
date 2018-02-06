@@ -299,7 +299,7 @@ class LfmPath
 
     private function saveFile($file, $new_file_name)
     {
-        $this->setName($new_file_name)->storage->save(file_get_contents($file));
+        $this->setName($new_file_name)->storage->saveContents(file_get_contents($file));
 
         $this->makeThumbnail($new_file_name);
 
@@ -322,6 +322,6 @@ class LfmPath
             ->fit(config('lfm.thumb_img_width', 200), config('lfm.thumb_img_height', 200))
             ->encode();
 
-        $this->setName($file_name)->thumb(true)->storage->save((string) $image_content);
+        $this->setName($file_name)->thumb(true)->storage->saveContents((string) $image_content);
     }
 }

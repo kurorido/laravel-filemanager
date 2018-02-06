@@ -39,6 +39,11 @@ class LfmStorageRepository implements RepositoryContract
         $this->disk->put($this->path, $file_content);
     }
 
+    public function saveContents($contents)
+    {
+        $this->save($contents);
+    }
+
     public function url($path)
     {
         return $this->disk->url($path);

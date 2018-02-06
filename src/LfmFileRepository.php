@@ -45,4 +45,11 @@ class LfmFileRepository implements RepositoryContract
 
         chmod($dest_file_path, config('lfm.create_file_mode', 0644));
     }
+
+    public function saveContents($contents)
+    {
+        $dest_file_path = $this->path;
+        File::put($dest_file_path, $contents);
+        chmod($dest_file_path, config('lfm.create_file_mode', 0644));
+    }
 }
