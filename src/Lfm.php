@@ -28,7 +28,7 @@ class Lfm
         }
     }
 
-    public function input($key, $default)
+    public function input($key, $default = '')
     {
         return $this->translateFromUtf8($this->request->input($key) ?? $default);
     }
