@@ -28,9 +28,9 @@ class Lfm
         }
     }
 
-    public function input($key)
+    public function input($key, $default)
     {
-        return $this->translateFromUtf8($this->request->input($key));
+        return $this->translateFromUtf8($this->request->input($key) ?? $default);
     }
 
     public function config($key)
@@ -74,7 +74,7 @@ class Lfm
     {
         $lfm_type = 'file';
 
-        $request_type = lcfirst(str_singular($this->input('type')));
+        $request_type = lcfirst(str_singular($this->input('type', $lfm_type)));
         $available_types = array_keys($this->config->get('lfm.folder_categories'));
 
         if (in_array($request_type, $available_types)) {
